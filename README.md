@@ -48,14 +48,13 @@ zspace                    256           -1      102.811
 yspace                    256           -1      161.156
 ```
 
-
-
 ### Build
 
 ```
 git clone https://github.com/aces/CIVET_Full_Project.git
 cd CIVET_Full_Project
-docker build -t civet $PWD
+# you can pass optional flags to make
+docker build -t civet --build-arg MAKE_FLAGS="-j $(nproc)" $PWD
 ```
 
 ## Download CIVET from GitHub

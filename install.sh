@@ -75,9 +75,12 @@ gcc --version
 g++ --version
 cpp --version
 
-make PREFIX_PATH=$INSTALL_DIR USE_GIT=$GIT USE_CVS=$CVS netpbm
-make PREFIX_PATH=$INSTALL_DIR ANIMAL=$ANIMAL MRI_SIM=$MRISIM USE_GIT=$GIT USE_CVS=$CVS main
-make PREFIX_PATH=$INSTALL_DIR ANIMAL=$ANIMAL MRI_SIM=$MRISIM USE_GIT=$GIT USE_CVS=$CVS civet inits
+# you can pass flags to make using the variable MAKE_FLAGS
+# example: MAKE_FLAGS="-j 8" ./install.sh
+
+make $MAKE_FLAGS PREFIX_PATH=$INSTALL_DIR USE_GIT=$GIT USE_CVS=$CVS netpbm
+make $MAKE_FLAGS PREFIX_PATH=$INSTALL_DIR ANIMAL=$ANIMAL MRI_SIM=$MRISIM USE_GIT=$GIT USE_CVS=$CVS main
+make $MAKE_FLAGS PREFIX_PATH=$INSTALL_DIR ANIMAL=$ANIMAL MRI_SIM=$MRISIM USE_GIT=$GIT USE_CVS=$CVS civet inits
 
 # Uncomment if you want to generate TGZ packages for all source codes
 # make PREFIX_PATH=$INSTALL_DIR ANIMAL=$ANIMAL MRI_SIM=$MRISIM source_packages
