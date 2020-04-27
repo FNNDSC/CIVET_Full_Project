@@ -26,8 +26,9 @@ RUN ["tar", "-zxf", "TGZ/netpbm-10.35.94.tgz", "-C", "Linux-x86_64/SRC/"]
 COPY provision/netpbm/Makefile.config Linux-x86_64/SRC/netpbm-10.35.94
 
 ARG MAKE_FLAGS
+ARG run_test
 RUN ["bash", "install.sh"]
-RUN ["bash", "job_test"]
+RUN [ -z "$run_test" ] || ./job_test
 
 # clean up build files to reduce image size
 WORKDIR /opt/CIVET/Linux-x86_64

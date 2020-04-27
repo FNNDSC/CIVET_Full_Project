@@ -53,9 +53,13 @@ yspace                    256           -1      161.156
 ```
 git clone https://github.com/aces/CIVET_Full_Project.git
 cd CIVET_Full_Project
-# you can pass optional flags to make
-docker build -t civet --build-arg MAKE_FLAGS="-j $(nproc)" $PWD
+docker build -t civet $PWD
 ```
+
+#### Arguments
+
+- `--build-arg MAKE_FLAGS="-j $(nproc)"`: pass optional flags to `make`. Use `-j` to speed up compilation.
+- `--build-arg run_test=yes`: run the test job in the builder container during the build.
 
 ## Download CIVET from GitHub
 
