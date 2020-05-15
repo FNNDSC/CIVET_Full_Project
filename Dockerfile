@@ -38,7 +38,6 @@ RUN ["chmod", "--recursive", "u+rX,g+rX,o+rX", "/opt/CIVET" ]
 
 # multi-stage build
 FROM base
-RUN ["mkdir", "-p", "/opt/CIVET/Linux-x86_64"]
 COPY --from=builder /opt/CIVET/Linux-x86_64/ /opt/CIVET/Linux-x86_64/
 
 # init.sh environment variables, should be equivalent to
