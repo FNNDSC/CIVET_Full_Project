@@ -61,6 +61,15 @@ docker build -t civet $PWD
 - `--build-arg MAKE_FLAGS="-j $(nproc)"`: pass optional flags to `make`. Use `-j` to speed up compilation.
 - `--build-arg run_test=yes`: run the test job in the builder container during the build.
 
+### non-x86_64 Architectures
+
+Alternatively, the file `Dockerfile.multiarch` features two patches to facilitate compilation on an uncommon host architecture (particular interest for PowerPC, to run on Mass Open Cloud).
+
+The following modifications are made:
+
+- output folder is renamed from `Linux-x86_64` to `dist`
+- `config.guess` is updated to a recent version
+
 ## Download CIVET from GitHub
 
 If you really wish to continue and compile CIVET from GitHub sources, you need follow the
