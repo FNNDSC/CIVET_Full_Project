@@ -50,25 +50,29 @@ yspace                    256           -1      161.156
 
 ### Build
 
+The file `Dockerfile` features two patches to facilitate compilation on an uncommon host architecture (particular interest for PowerPC, to run on Mass Open Cloud).
+
+The following modifications are made:
+
+- output folder is renamed from `Linux-x86_64` to `dist`
+- `config.guess` is updated to a recent version
+
 ```
 git clone https://github.com/aces/CIVET_Full_Project.git
 cd CIVET_Full_Project
-docker build -t civet $PWD
+docker build -t civet .
+```
+
+Skip multi-arch support using `Dockerfile.vanilla`.
+
+```
+docker build -t civet -f Dockerfile.vanilla .
 ```
 
 #### Arguments
 
 - `--build-arg MAKE_FLAGS="-j $(nproc)"`: pass optional flags to `make`. Use `-j` to speed up compilation.
 - `--build-arg run_test=yes`: run the test job in the builder container during the build.
-
-### non-x86_64 Architectures
-
-Alternatively, the file `Dockerfile.multiarch` features two patches to facilitate compilation on an uncommon host architecture (particular interest for PowerPC, to run on Mass Open Cloud).
-
-The following modifications are made:
-
-- output folder is renamed from `Linux-x86_64` to `dist`
-- `config.guess` is updated to a recent version
 
 ## Download CIVET from GitHub
 
